@@ -1,0 +1,6 @@
+ul.post_card li {
+  list-style: none;
+  @include shadow-box;
+  @extend .flex-content;
+  @extend .basic-alignment;
+}
