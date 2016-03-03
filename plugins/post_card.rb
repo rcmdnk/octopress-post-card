@@ -36,7 +36,9 @@ module Jekyll
             end
           end
           if @post.start_with?(site.config['root'])
-            @post.gsub!(site.config['root'], "")
+            if site.config['root'] != "/"
+              @post.gsub!(site.config['root'], "")
+            end
             if @post[0] != "/"
               @post = "/" + @post
             end
