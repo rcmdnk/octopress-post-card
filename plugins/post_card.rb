@@ -45,13 +45,13 @@ module Jekyll
           end
         end
 
-        site.posts.each do |p|
-          if @post == p.title || @post == p.url ||
+        site.posts.docs.each do |p|
+          if @post == p.data['title'] || @post == p.url ||
              @post.split('/')[-1].split('.')[0] ==
              p.path.split('/')[-1].split('.')[0]
             url = p.url
             return "<a href='#{url}'>#{url}</a>" if @opt == 'url'
-            title = p.title
+            title = p.data['title']
             if title =~ /(.+)\/$|^\/$/
               title = $1
             end
@@ -75,7 +75,7 @@ module Jekyll
             img = site.config['sitelogo'] if img == '' &&
                                              site.config.key?('sitelogo')
             unless amazon
-              thum = Jekyll::Thumbnail.new('thumbnail', "small-thumbnail #{img}", '')
+              thum = Jekyll::Thumbnail.parse('thumbnail', "small-thumbnail #{img}", '', '')
               img = '<div class="title-small-thumbnail">
   <a href="' + url + '">' + thum.render(context) + '</a>
 </div>'
