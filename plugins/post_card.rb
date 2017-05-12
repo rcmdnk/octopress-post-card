@@ -1,3 +1,4 @@
+require "./plugins/octopress_filters"
 require "./plugins/affiliate"
 module Jekyll
   module Tags
