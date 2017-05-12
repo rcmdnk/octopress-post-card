@@ -1,4 +1,5 @@
 require "./plugins/octopress_filters"
+require "./plugins/affiliate"
 module Jekyll
   module Tags
     class PostCard < Liquid::Tag
@@ -63,7 +64,7 @@ module Jekyll
               img = p['ogimage']
             else
               begin
-                img = amazon_img(p.content)
+                img = AmazonFilter.amazon_img(p.content)
                 if img != ''
                   img = '<div class="title-small-thumbnail">' + img + '</div>'
                   amazon = true
