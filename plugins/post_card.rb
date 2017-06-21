@@ -76,7 +76,12 @@ module Jekyll
             img = site.config['sitelogo'] if img == '' &&
                                              site.config.key?('sitelogo')
             unless amazon
-              thum = Jekyll::Thumbnail.parse('thumbnail', "small-thumbnail #{img}", '', '')
+              begin
+                parse_context = Liquid::ParseContext.new({})
+              rescue
+                parse_context = {}
+              end
+              thum = Jekyll::Thumbnail.parse('thumbnail', "small-thumbnail #{img}", '', parse_context)
               img = '<div class="title-small-thumbnail">
   <a href="' + url + '">' + thum.render(context) + '</a>
 </div>'

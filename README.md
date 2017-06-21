@@ -3,6 +3,8 @@ Post card like link to other page in the site.
 
 ## Installation
 
+Install plugin: [octopress-thumbnail](https://github.com/rcmdnk/octopress-thumbnail).
+
 Copy `plugins/post_card.rb` to your `plugins/` directory.
 
 Copy `sass/plugins/_post-card.rb` to your `sass/plugins/` directory.
